@@ -3,13 +3,14 @@
  * @return {number[]}
  */
 var findDisappearedNumbers = function(nums) {
-    let length = nums.length
-    let arr = []
-    for (let i = 0; i < length; i++) {
-      arr[i] = i+1
+    let s = {};
+    for (let i =1; i< nums.length+1; i++) {
+        s[i] = 1;
     }
-    for (v of nums) {
-      arr[v-1] = -1
-    }
-    return arr.filter(i => (i > 0))
+    
+    nums.forEach(n=> {
+        delete s[n];
+    })
+    
+   return Object.keys(s)
 };
